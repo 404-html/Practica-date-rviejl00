@@ -8,22 +8,35 @@ public class Date {
 
 	public Date(int day, int month, int year) throws DateException{
 		this.year = year;
+		this.month = month;
+		this.day = day;
+		//Comprueba el mes desde el metodo setMonth
+		setMonth(month);
 		
-		//Comprueba el mes
+		//Comprueba el dia desde el metodo setDay
+		setDay(day);
+	}
+	
+	//Asigna y verifica el mes
+	public void setMonth(int month)throws DateException{
+		
 		if (month < 1 || month > 12) {
 			throw new DateException("Mes " + month + " no valido." +
 					" Valores posibles entre 1 y 12.");
 		} else {
 			this.month = month;
 		}
+	}
+	
+	//Asigna y verifica el dia
+	public void setDay(int day)throws DateException{
 		
-		//Comprueba el dia
-		if((this.day>0) && (this.day < getDaysOfMonth())){
+		if((this.day>0) && (this.day <= getDaysOfMonth())){
 			
 		this.day = day;
 		
 		}else{
-			throw new DateException("Dia " +this.day+" no valido para el mes: "+getMonthName()+" valores posibles entre 1 y "+getDaysOfMonth());
+			throw new DateException("Dia " +day+" no valido para el mes "+getMonthName()+", valores posibles entre 1-"+getDaysOfMonth());
 		}
 	}
 	
@@ -42,18 +55,26 @@ public class Date {
 		return this.day;
 	}
 	
-	//Devuelve si una fecha y otra tienen el mismo año
-	public boolean isSameYear(Date date){
+	//Devuelve si una fecha y otra tienen el mismo año con if
+	public boolean isSameYearIf(Date date){
 		boolean sameYear = false;
 		
 		if(this.year == date.getYear()){
 			sameYear = true;
 		}
 	return sameYear;
+
 	}
 	
-	//Devuelve si una fecha y otra tienen el mismo mes
-	public boolean isSameMonth(Date date){
+	//Devuelve si una fecha y otra tienen el mismo año sin if
+	public boolean isSameYear(Date date){
+		
+		return this.year == date.getYear();
+	}
+	
+	
+	//Devuelve si una fecha y otra tienen el mismo mes con if
+	public boolean isSameMonthIf(Date date){
 		boolean sameMonth = false;
 		
 		if(this.month == date.getMonth()){
@@ -62,23 +83,37 @@ public class Date {
 	return sameMonth;
 	}
 	
-	//Devuelve si una fecha y otra tienen el mismo dia
-	public boolean isSameDay(Date date){
+	//Devuelve si una fecha y otra tienen el mismo mes sin if
+	public boolean isSameMonth(Date date){
+		
+		return this.month == date.getMonth();
+	}
+	
+	//Devuelve si una fecha y otra tienen el mismo dia con if
+	public boolean isSameDayIf(Date date){
 		boolean sameDay = false;
 		
 		if(this.day == date.getDay()){
 			sameDay = true;
 		}
 	return sameDay;
+
+	}
+	
+	//Devuelve si una fecha y otra tienen el mismo dia sin if
+	public boolean isSameDay(Date date){
+		
+		return this.day == date.getDay();
 	}
 	
 	//Devuelve si la fecha es la misma
 	public boolean isSame(Date date){
 		boolean same = false;
 		
-		if(){
-			
+		if((this.day == date.getDay())&&(this.month == date.getMonth())&&(this.year == date.getYear())){
+			same = true;
 		}
+		return same;
 	}
 		
 	//Devuelve los dias del mes	
