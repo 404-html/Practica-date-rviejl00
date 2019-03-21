@@ -36,7 +36,7 @@ public class Date {
 		this.day = day;
 		
 		}else{
-			throw new DateException("Dia " +day+" no valido para el mes "+getMonthName()+", valores posibles entre 1-"+getDaysOfMonth());
+			throw new DateException("Dia " +day+" no valido para el mes "+getMonthName(this.month)+", valores posibles entre 1-"+getDaysOfMonth());
 		}
 	}
 	
@@ -106,8 +106,8 @@ public class Date {
 		return this.day == date.getDay();
 	}
 	
-	//Devuelve si la fecha es la misma
-	public boolean isSame(Date date){
+	//Devuelve si la fecha es la misma con if 
+	public boolean isSameIf(Date date){
 		boolean same = false;
 		
 		if((this.day == date.getDay())&&(this.month == date.getMonth())&&(this.year == date.getYear())){
@@ -115,9 +115,14 @@ public class Date {
 		}
 		return same;
 	}
+	
+	//Devuelve si la fecha es la misma con if 
+	public boolean isSame(Date date){
+		return ((this.day == date.getDay())&&(this.month == date.getMonth())&&(this.year == date.getYear()));
+	}
 		
 	//Devuelve los dias del mes	
-	public int getDaysOfMonth(){
+	private int getDaysOfMonth(){
 		int day = 0;
 		
 		switch(this.month){
@@ -147,16 +152,16 @@ public class Date {
 	}
 	
 	//Devuelve el nombre del mes
-	public String getMonthName(){
+	public String getMonthName(int mes){
 		String name ="";
 		
-		switch(this.month){
+		switch(mes){
 			
 			case 1: 
 			name = "Enero";
 			break;
 			case 2: 
-			name = "Febrerp";
+			name = "Febrero";
 			break;
 			case 3: 
 			name = "Marzo";
@@ -190,6 +195,74 @@ public class Date {
 			break;
 		}
 		return name;
+	}
+	
+	public String getMonthSeason(){
+		String season ="";
+
+		switch(this.month){
+			
+			case 12: //Next
+			case 1: //Next
+			case 2: 
+			season = "Invierno";
+			break;
+			case 3:  //Next
+			case 4:  //Next
+			case 5: 
+			season = "Primavera";
+			break;
+			case 6:  //Next
+			case 7:  //Next
+			case 8: 
+			season = "Verano";
+			break;
+			case 9:  //Next
+			case 10:  //Next
+			case 11: 
+			season = "Otoño";
+			break;
+		}
+		return season;
+	}
+	
+	public int getMonthsLeft(){
+		int suma = 0;
+	
+		for(int i = (this.month +1);i<=12;i++){
+			suma = suma +1;
+		}
+		return suma;
+	}
+	
+	public String dateToString(){
+		
+		StringBuffer date = new StringBuffer("");
+		date.append(this.day);
+		date.append("/");
+		date.append(this.month);
+		date.append("/");
+		date.append(this.year);
+		return date.toString();
+		
+	}
+	
+	public String getDatesLeft(Date date){
+		StringBuffer dates = new StringBuffer("");
+		
+		for(int i = (this.day +1);i<=(date.getDaysOfMonth());i++){
+			dates.append(i);
+			dates.append("/");
+			dates.append(this.month);
+			dates.append(" ");
+		}
+		return dates.toString();
+	}
+	
+	public String withSameDays(){
+		StringBuffer same = new StringBuffer("");
+		
+		return same.toString();
 	}
 
 	@Override
