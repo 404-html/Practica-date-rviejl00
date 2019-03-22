@@ -1,5 +1,12 @@
 package es.unileon.prg.date;
 
+/**
+*	Main de date
+*	
+*	@version 1.0 
+*	@author rviejl00
+*/
+
 public class MainDate {
 
 	public static void main(String[] args) {
@@ -14,7 +21,8 @@ public class MainDate {
 			System.out.println("La misma: "+today.isSame(yesterday));
 			System.out.println("La estacion es: "+today.getMonthSeason());
 			System.out.println("La fecha de hoy es: "+today.dateToString());
-			System.out.println("Fechas que faltan hasta final de mes: "+today.getDatesLeft(today));
+			System.out.println("Fechas que faltan hasta final de mes: "+today.getDatesLeft());
+			System.out.println("Los meses que tienen los mismos dias que "+today.getMonthName()+" son: "+today.withSameDays());
 			System.out.println(today.toString());
 		} catch (DateException e) {
 			System.out.println(e.getMessage());

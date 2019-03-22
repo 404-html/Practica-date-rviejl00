@@ -1,11 +1,24 @@
 package es.unileon.prg.date;
 
+/**
+*	Clase Date donde son resueltos los ejercicios date
+*	@version 1.0
+*	@author rviejl00
+*/
+
 public class Date {
 
+	/**
+	*	Atributos de clase
+	*/
 	private int day;
 	private int month;
 	private int year;
-
+	
+	/**
+	*	Constructor de la clase, crea una fecha dados dia, mes y año.
+	*	Si alguno de los parametros es incorrecto lanza una excepcion
+	*/
 	public Date(int day, int month, int year) throws DateException{
 		this.year = year;
 		this.month = month;
@@ -17,7 +30,9 @@ public class Date {
 		setDay(day);
 	}
 	
-	//Asigna y verifica el mes
+	/**
+	*	Metodo que asigna y verifica si el mes es valido.
+	*/
 	public void setMonth(int month)throws DateException{
 		
 		if (month < 1 || month > 12) {
@@ -28,7 +43,9 @@ public class Date {
 		}
 	}
 	
-	//Asigna y verifica el dia
+	/**
+	*	Metodo que asigna y verifica si el dia es valido.
+	*/
 	public void setDay(int day)throws DateException{
 		
 		if((this.day>0) && (this.day <= getDaysOfMonth())){
@@ -36,45 +53,54 @@ public class Date {
 		this.day = day;
 		
 		}else{
-			throw new DateException("Dia " +day+" no valido para el mes "+getMonthName(this.month)+", valores posibles entre 1-"+getDaysOfMonth());
+			throw new DateException("Dia " +day+" no valido para el mes "+p_getMonthName(this.month)+", valores posibles entre 1-"+getDaysOfMonth());
 		}
 	}
 	
-	//Devuelve el año
+	/**
+	*	Metodo que devuelve el año.
+	*/
 	public int getYear(){
 		return this.year;	
 	}
 	
-	//Devuelve el mes
+	/**
+	*	Metodo que devuelve el mes.
+	*/
 	public int getMonth(){
 		return this.month;	
 	}
 	
-	//Devuelve el dia
+	/**
+	*	Metodo que devuelve el dia
+	*/
 	public int getDay(){
 		return this.day;
 	}
 	
-	//Devuelve si una fecha y otra tienen el mismo año con if
-	public boolean isSameYearIf(Date date){
+	/**
+	*	Metodos que devuelven si una fecha tiene el mismo año que otra con if y sin if respectivamente.
+	*	Dado como parametro un objeto de clase Date.
+	*/
+	public boolean isSameYearIf(Date date){ //Con if
 		boolean sameYear = false;
 		
 		if(this.year == date.getYear()){
 			sameYear = true;
 		}
 	return sameYear;
-
 	}
 	
-	//Devuelve si una fecha y otra tienen el mismo año sin if
-	public boolean isSameYear(Date date){
-		
+	public boolean isSameYear(Date date){ //Sin if
 		return this.year == date.getYear();
 	}
 	
 	
-	//Devuelve si una fecha y otra tienen el mismo mes con if
-	public boolean isSameMonthIf(Date date){
+	/**
+	*	Metodos que devuelven si una fecha tiene el mismo mes que otra, con if y sin if respectivamente.
+	*	Dado como parametro un objeto de clase Date.
+	*/
+	public boolean isSameMonthIf(Date date){ //Con if
 		boolean sameMonth = false;
 		
 		if(this.month == date.getMonth()){
@@ -83,31 +109,32 @@ public class Date {
 	return sameMonth;
 	}
 	
-	//Devuelve si una fecha y otra tienen el mismo mes sin if
-	public boolean isSameMonth(Date date){
-		
+	public boolean isSameMonth(Date date){ //Sin if
 		return this.month == date.getMonth();
 	}
 	
-	//Devuelve si una fecha y otra tienen el mismo dia con if
-	public boolean isSameDayIf(Date date){
+	/**
+	*	Metodos que devuelven si una fecha tiene el mismo dia que otra, con if y sin if respectivamente.
+	*	Dado como parametro un objeto de clase Date.
+	*/
+	public boolean isSameDayIf(Date date){ //Con if
 		boolean sameDay = false;
 		
 		if(this.day == date.getDay()){
 			sameDay = true;
 		}
 	return sameDay;
-
 	}
 	
-	//Devuelve si una fecha y otra tienen el mismo dia sin if
-	public boolean isSameDay(Date date){
-		
+	public boolean isSameDay(Date date){ //Sin if
 		return this.day == date.getDay();
 	}
 	
-	//Devuelve si la fecha es la misma con if 
-	public boolean isSameIf(Date date){
+	/**
+	*	Metodos que devuelven si una fecha es igual que otra, con if y sin if respectivamente.
+	*	Dado como parametro un objeto de clase Date.
+	*/
+	public boolean isSameIf(Date date){ //Con if
 		boolean same = false;
 		
 		if((this.day == date.getDay())&&(this.month == date.getMonth())&&(this.year == date.getYear())){
@@ -116,12 +143,14 @@ public class Date {
 		return same;
 	}
 	
-	//Devuelve si la fecha es la misma con if 
-	public boolean isSame(Date date){
+	public boolean isSame(Date date){ //Sin if
 		return ((this.day == date.getDay())&&(this.month == date.getMonth())&&(this.year == date.getYear()));
 	}
 		
-	//Devuelve los dias del mes	
+	/**
+	*	Metodo privado que devuelve cuantos dias tiene el mes de la fecha.
+	*	Se usa para verificar los dias en otros metodos.
+	*/
 	private int getDaysOfMonth(){
 		int day = 0;
 		
@@ -151,8 +180,43 @@ public class Date {
 		return day;
 	}
 	
-	//Devuelve el nombre del mes
-	public String getMonthName(int mes){
+	/**
+	*	Metodo que devuelve cuantos dias tiene el mes dado como parametro.
+	*/
+	private int p_getDaysOfMonth(int mes){
+		int day = 0;
+		
+		switch(mes){
+			
+			case 1: //Next
+			case 3: //Next
+			case 5: //Next
+			case 7: //Next
+			case 8: //Next
+			case 10: //Next
+			case 12:
+			day = 31;
+			break;
+			
+			case 4: //Next
+			case 6: //Next
+			case 9: //Next
+			case 11:
+			day = 30;
+			break;
+			
+			case 2:
+			day = 28;
+			break;
+		}
+		return day;
+	}
+	
+	/**
+	*	Metodo que privado devuelve un string con el nombre del mes dado como parametro.
+	*	El parametro es un tipo entero.
+	*/
+	private String p_getMonthName(int mes){
 		String name ="";
 		
 		switch(mes){
@@ -197,6 +261,57 @@ public class Date {
 		return name;
 	}
 	
+	/**
+	*	Metodo publico que devuelve el nombre del mes de una fecha
+	*/
+	public String getMonthName(){
+		String name ="";
+		
+		switch(this.month){
+			
+			case 1: 
+			name = "Enero";
+			break;
+			case 2: 
+			name = "Febrero";
+			break;
+			case 3: 
+			name = "Marzo";
+			break;
+			case 4: 
+			name = "Abril";
+			break;
+			case 5: 
+			name = "Mayo";
+			break;
+			case 6: 
+			name = "Junio";
+			break;
+			case 7:
+			name = "Julio";
+			break;
+			case 8: 
+			name = "Agosto";
+			break;
+			case 9:
+			name = "Septiembre";
+			break;
+			case 10: 
+			name = "Octubre";
+			break;
+			case 11:
+			name = "Noviembre";
+			break;
+			case 12:
+			name = "Diciembre";
+			break;
+		}
+		return name;
+	}
+	
+	/**
+	*	Metodo que devuelve la estacion del mes de una fecha.
+	*/
 	public String getMonthSeason(){
 		String season ="";
 
@@ -226,6 +341,10 @@ public class Date {
 		return season;
 	}
 	
+	/**
+	*	Metodo que devuelve cuantos meses quedan para que acabe el año 
+	*	teniendo en cuenta el mes de una fecha.
+	*/
 	public int getMonthsLeft(){
 		int suma = 0;
 	
@@ -235,6 +354,9 @@ public class Date {
 		return suma;
 	}
 	
+	/**
+	*	Metodo que devuelve una fecha como tipo String
+	*/
 	public String dateToString(){
 		
 		StringBuffer date = new StringBuffer("");
@@ -247,10 +369,14 @@ public class Date {
 		
 	}
 	
-	public String getDatesLeft(Date date){
+	/**
+	*	Metodo que devuelve un String con todas las fechas que quedan 
+	*	hasta que acabe el año.
+	*/
+	public String getDatesLeft(){
 		StringBuffer dates = new StringBuffer("");
 		
-		for(int i = (this.day +1);i<=(date.getDaysOfMonth());i++){
+		for(int i = (this.day +1);i<=(p_getDaysOfMonth(this.month));i++){
 			dates.append(i);
 			dates.append("/");
 			dates.append(this.month);
@@ -259,9 +385,20 @@ public class Date {
 		return dates.toString();
 	}
 	
+	/**
+	*	Metodo que devuelve los meses que tengan los mismos
+	*	dias que el mes de la fecha en la que se usa el metodo.
+	*/
 	public String withSameDays(){
 		StringBuffer same = new StringBuffer("");
 		
+		for(int i =1;i<13;i++){
+			if((p_getDaysOfMonth(i) == p_getDaysOfMonth(this.month)) && i != this.month){
+				
+				same.append(p_getMonthName(i));
+				same.append(" ");
+			}
+		}			
 		return same.toString();
 	}
 
