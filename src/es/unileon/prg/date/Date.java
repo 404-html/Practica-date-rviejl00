@@ -418,7 +418,8 @@ public class Date {
 	/**
 	*	Metodo que cuenta cuantos intentos necesita el programa
 	*	para generar una fecha con el mismo año que la introducida
-	*	para ello generara numeros aleatorios desde el 1 hasta el 2019.
+	*	para ello generara numeros aleatorios desde el año 1 hasta el año de la fecha mas 1500 años.
+	*	He decidido poner ese rango de años ya que no se especifica entre cuantos años tiene que buscar.
 	* 	
 	*	La fecha que tiene que adivinar se dara como parametro
 	*	Ademas hay un metodo con while y otro con do-while respectivamente
@@ -429,7 +430,7 @@ public class Date {
 		
 		while(guessing){
 			intentos = intentos + 1;
-			int prueba = (int) (Math.random() * 2019) +1;
+			int prueba = (int) (Math.random() * (this.year+1500)) +1;
 			if(prueba ==this.year){
 				guessing = false;
 			}
@@ -444,7 +445,7 @@ public class Date {
 		
 		do{
 			intentos = intentos + 1;
-			int prueba = (int) (Math.random() * 2019) +1;
+			int prueba = (int) (Math.random() * (this.year+1500)) +1;
 			if(prueba ==this.year){
 				guessing = false;
 			}
@@ -454,7 +455,9 @@ public class Date {
 		return intentos;
 	}
 	
-	
+	/**
+	*	
+	*/
 	
 	@Override
 	public String toString() {

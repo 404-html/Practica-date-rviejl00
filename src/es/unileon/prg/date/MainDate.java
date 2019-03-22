@@ -14,7 +14,7 @@ public class MainDate {
 		Date today, yesterday;
 
 		try {
-			today = new Date(2,1,2013);
+			today = new Date(29,10,2020);
 			yesterday = new Date(10,12,2013);
 			
 			System.out.println("Año: "+today.isSameDay(yesterday.getDay())+" Mes: "+today.isSameMonth(yesterday.getMonth())+" año: "+today.isSameYear(yesterday.getYear()));
