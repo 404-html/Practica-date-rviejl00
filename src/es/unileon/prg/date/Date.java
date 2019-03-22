@@ -456,8 +456,60 @@ public class Date {
 	}
 	
 	/**
-	*	
+	*	Devuelve el dia de la semana que es de una fecha dada.
+	*	Dado como parametro el primer dia del año.
+	*	Siendo 1 Lunes y 7 Domingo
 	*/
+	public String dayOfWeek(int dia){
+		int suma = dia;
+		String diaS ="";
+		try{
+			Date date = new Date(this.day, this.month, this.year);
+			
+		//Para tener en cuenta los años bisiestos
+		if((((this.year%4 == 0) && (this.year%100 != 0)) || (this.year%400 == 0))&& (this.month>2)){ 
+			
+			for(int i = 1; i <date.passedDays()+1;i++){
+				suma = suma + 1;
+					if(suma == 8){
+					suma = 1;
+					}
+			}
+		}else{
+			
+			for(int i = 1; i <date.passedDays();i++){
+				suma = suma + 1;
+				if(suma == 8){
+				suma = 1;
+				}
+			}
+		}
+		switch(suma){
+			case 1:
+			diaS="Lunes";
+			break;
+			case 2:
+			diaS="Martes";
+			break;
+			case 3:
+			diaS="Miercoles";
+			break;
+			case 4:
+			diaS="Jueves";
+			break;
+			case 5:
+			diaS="Viernes";
+			break;
+			case 6:
+			diaS="Sabado";
+			break;
+			case 7:
+			diaS="Domingo";
+			break;
+		}
+		}catch(DateException e){}
+		return diaS;
+	}
 	
 	@Override
 	public String toString() {

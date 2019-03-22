@@ -14,7 +14,7 @@ public class MainDate {
 		Date today, yesterday;
 
 		try {
-			today = new Date(29,10,2020);
+			today = new Date(21,2,2020);
 			yesterday = new Date(10,12,2013);
 			
 			System.out.println("Año: "+today.isSameDay(yesterday.getDay())+" Mes: "+today.isSameMonth(yesterday.getMonth())+" año: "+today.isSameYear(yesterday.getYear()));
@@ -26,6 +26,7 @@ public class MainDate {
 			System.out.println("Han pasado "+today.passedDays()+" dias desde el 1 de enero");
 			System.out.println("Intentos para el while: "+today.guessDateWhile());
 			System.out.println("Intentos para el do-while: "+today.guessDateDoWhile());
+			System.out.println("Hoy estamos a "+today.dayOfWeek(3));
 			System.out.println(today.toString());
 		} catch (DateException e) {
 			System.out.println(e.getMessage());
