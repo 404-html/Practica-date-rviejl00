@@ -80,59 +80,59 @@ public class Date {
 	
 	/**
 	*	Metodos que devuelven si una fecha tiene el mismo año que otra con if y sin if respectivamente.
-	*	Dado como parametro un objeto de clase Date.
+	*	Dado como parametro un año de tipo entero.
 	*/
-	public boolean isSameYearIf(Date date){ //Con if
+	public boolean isSameYearIf(int otherYear){ //Con if
 		boolean sameYear = false;
 		
-		if(this.year == date.getYear()){
+		if(this.year == otherYear){
 			sameYear = true;
 		}
 	return sameYear;
 	}
 	
-	public boolean isSameYear(Date date){ //Sin if
-		return this.year == date.getYear();
+	public boolean isSameYear(int otherYear){ //Sin if
+		return this.year == otherYear;
 	}
 	
 	
 	/**
 	*	Metodos que devuelven si una fecha tiene el mismo mes que otra, con if y sin if respectivamente.
-	*	Dado como parametro un objeto de clase Date.
+	*	Dado como parametro un mes de tipo entero.
 	*/
-	public boolean isSameMonthIf(Date date){ //Con if
+	public boolean isSameMonthIf(int otherMonth){ //Con if
 		boolean sameMonth = false;
 		
-		if(this.month == date.getMonth()){
+		if(this.month == otherMonth){
 			sameMonth = true;
 		}
 	return sameMonth;
 	}
 	
-	public boolean isSameMonth(Date date){ //Sin if
-		return this.month == date.getMonth();
+	public boolean isSameMonth(int otherMonth){ //Sin if
+		return this.month == otherMonth;
 	}
 	
 	/**
 	*	Metodos que devuelven si una fecha tiene el mismo dia que otra, con if y sin if respectivamente.
-	*	Dado como parametro un objeto de clase Date.
+	*	Dado como parametro un dia de tipo entero.
 	*/
-	public boolean isSameDayIf(Date date){ //Con if
+	public boolean isSameDayIf(int otherDay){ //Con if
 		boolean sameDay = false;
 		
-		if(this.day == date.getDay()){
+		if(this.day == otherDay){
 			sameDay = true;
 		}
 	return sameDay;
 	}
 	
-	public boolean isSameDay(Date date){ //Sin if
-		return this.day == date.getDay();
+	public boolean isSameDay(int otherDay){ //Sin if
+		return this.day == otherDay;
 	}
 	
 	/**
 	*	Metodos que devuelven si una fecha es igual que otra, con if y sin if respectivamente.
-	*	Dado como parametro un objeto de clase Date.
+	*	Dado como parametro un objeto de tipo Date.
 	*/
 	public boolean isSameIf(Date date){ //Con if
 		boolean same = false;
@@ -401,7 +401,61 @@ public class Date {
 		}			
 		return same.toString();
 	}
+	
+	/**
+	*	Metodo que devuelve los meses que han pasado hasta ese dia
+	*	contando el propio dia.
+	*/
+	public int passedDays(){
+		int suma = this.day;
+		
+		for(int i = 1;i<this.month;i++){
+			suma = suma + p_getDaysOfMonth(i);
+		}
+		return suma;
+	}
+	
+	/**
+	*	Metodo que cuenta cuantos intentos necesita el programa
+	*	para generar una fecha con el mismo año que la introducida
+	*	para ello generara numeros aleatorios desde el 1 hasta el 2019.
+	* 	
+	*	La fecha que tiene que adivinar se dara como parametro
+	*	Ademas hay un metodo con while y otro con do-while respectivamente
+	*/
+	public int guessDateWhile(){ //Con While
+		int intentos = 0;
+		boolean guessing = true;
+		
+		while(guessing){
+			intentos = intentos + 1;
+			int prueba = (int) (Math.random() * 2019) +1;
+			if(prueba ==this.year){
+				guessing = false;
+			}
+			
+		}
+		return intentos;
+	}
 
+	public int guessDateDoWhile(){ //Con do-while
+		int intentos = 0;
+		boolean guessing = true;
+		
+		do{
+			intentos = intentos + 1;
+			int prueba = (int) (Math.random() * 2019) +1;
+			if(prueba ==this.year){
+				guessing = false;
+			}
+			
+		}while(guessing);
+			
+		return intentos;
+	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return this.day + "/" + this.month + "/" + this.year;
