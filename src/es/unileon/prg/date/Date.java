@@ -18,6 +18,8 @@ public class Date {
 	/**
 	*	Constructor de la clase, crea una fecha dados dia, mes y año.
 	*	Si alguno de los parametros es incorrecto lanza una excepcion
+	*
+	*	@param
 	*/
 	public Date(int day, int month, int year) throws DateException{
 		this.year = year;
@@ -32,6 +34,8 @@ public class Date {
 	
 	/**
 	*	Metodo que asigna y verifica si el mes es valido.
+	*
+	*	@param
 	*/
 	public void setMonth(int month)throws DateException{
 		
@@ -45,6 +49,8 @@ public class Date {
 	
 	/**
 	*	Metodo que asigna y verifica si el dia es valido.
+	*
+	*	@param
 	*/
 	public void setDay(int day)throws DateException{
 		
@@ -59,6 +65,8 @@ public class Date {
 	
 	/**
 	*	Metodo que devuelve el año.
+	*
+	*	@param
 	*/
 	public int getYear(){
 		return this.year;	
@@ -66,6 +74,8 @@ public class Date {
 	
 	/**
 	*	Metodo que devuelve el mes.
+	*
+	*	@param
 	*/
 	public int getMonth(){
 		return this.month;	
@@ -73,6 +83,8 @@ public class Date {
 	
 	/**
 	*	Metodo que devuelve el dia
+	*
+	*	@param
 	*/
 	public int getDay(){
 		return this.day;
@@ -81,6 +93,8 @@ public class Date {
 	/**
 	*	Metodos que devuelven si una fecha tiene el mismo año que otra con if y sin if respectivamente.
 	*	Dado como parametro un año de tipo entero.
+	*
+	*	@param
 	*/
 	public boolean isSameYearIf(int otherYear){ //Con if
 		boolean sameYear = false;
@@ -99,6 +113,8 @@ public class Date {
 	/**
 	*	Metodos que devuelven si una fecha tiene el mismo mes que otra, con if y sin if respectivamente.
 	*	Dado como parametro un mes de tipo entero.
+	*
+	*	@param
 	*/
 	public boolean isSameMonthIf(int otherMonth){ //Con if
 		boolean sameMonth = false;
@@ -116,6 +132,8 @@ public class Date {
 	/**
 	*	Metodos que devuelven si una fecha tiene el mismo dia que otra, con if y sin if respectivamente.
 	*	Dado como parametro un dia de tipo entero.
+	*
+	*	@param
 	*/
 	public boolean isSameDayIf(int otherDay){ //Con if
 		boolean sameDay = false;
@@ -133,6 +151,8 @@ public class Date {
 	/**
 	*	Metodos que devuelven si una fecha es igual que otra, con if y sin if respectivamente.
 	*	Dado como parametro un objeto de tipo Date.
+	*
+	*	@param
 	*/
 	public boolean isSameIf(Date date){ //Con if
 		boolean same = false;
@@ -150,6 +170,8 @@ public class Date {
 	/**
 	*	Metodo privado que devuelve cuantos dias tiene el mes de la fecha.
 	*	Se usa para verificar los dias en otros metodos.
+	*
+	*	@param
 	*/
 	private int getDaysOfMonth(){
 		int day = 0;
@@ -182,6 +204,8 @@ public class Date {
 	
 	/**
 	*	Metodo que devuelve cuantos dias tiene el mes dado como parametro.
+	*
+	*	@param
 	*/
 	private int p_getDaysOfMonth(int mes){
 		int day = 0;
@@ -215,6 +239,8 @@ public class Date {
 	/**
 	*	Metodo que privado devuelve un string con el nombre del mes dado como parametro.
 	*	El parametro es un tipo entero.
+	*
+	*	@param
 	*/
 	private String p_getMonthName(int mes){
 		String name ="";
@@ -263,6 +289,8 @@ public class Date {
 	
 	/**
 	*	Metodo publico que devuelve el nombre del mes de una fecha
+	*
+	*	@param
 	*/
 	public String getMonthName(){
 		String name ="";
@@ -311,6 +339,8 @@ public class Date {
 	
 	/**
 	*	Metodo que devuelve la estacion del mes de una fecha.
+	*
+	*	@param
 	*/
 	public String getMonthSeason(){
 		String season ="";
@@ -344,6 +374,8 @@ public class Date {
 	/**
 	*	Metodo que devuelve cuantos meses quedan para que acabe el año 
 	*	teniendo en cuenta el mes de una fecha.
+	*
+	*	@param
 	*/
 	public int getMonthsLeft(){
 		int suma = 0;
@@ -356,6 +388,8 @@ public class Date {
 	
 	/**
 	*	Metodo que devuelve una fecha como tipo String
+	*
+	*	@param
 	*/
 	public String dateToString(){
 		
@@ -372,6 +406,8 @@ public class Date {
 	/**
 	*	Metodo que devuelve un String con todas las fechas que quedan 
 	*	hasta que acabe el año.
+	*
+	*	@param
 	*/
 	public String getDatesLeft(){
 		StringBuffer dates = new StringBuffer("");
@@ -388,6 +424,8 @@ public class Date {
 	/**
 	*	Metodo que devuelve los meses que tengan los mismos
 	*	dias que el mes de la fecha en la que se usa el metodo.
+	*
+	*	@param
 	*/
 	public String withSameDays(){
 		StringBuffer same = new StringBuffer("");
@@ -405,6 +443,8 @@ public class Date {
 	/**
 	*	Metodo que devuelve los meses que han pasado hasta ese dia
 	*	contando el propio dia.
+	*
+	*	@param
 	*/
 	public int passedDays(){
 		int suma = this.day;
@@ -423,6 +463,8 @@ public class Date {
 	* 	
 	*	La fecha que tiene que adivinar se dara como parametro
 	*	Ademas hay un metodo con while y otro con do-while respectivamente
+	*
+	*	@param
 	*/
 	public int guessDateWhile(){ //Con While
 		int intentos = 0;
@@ -459,6 +501,8 @@ public class Date {
 	*	Devuelve el dia de la semana que es de una fecha dada.
 	*	Dado como parametro el primer dia del año.
 	*	Siendo 1 Lunes y 7 Domingo
+	*
+	*	@param
 	*/
 	public String dayOfWeek(int dia){
 		int suma = dia;
